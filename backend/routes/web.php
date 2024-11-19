@@ -40,6 +40,16 @@ Route::get('/posts/{id}/comments/{commentId}', function(string $id, string $comm
 
 Route::get('/test', function(Request $request) {
     return [
-        'method' => $request->method()
+        'method' => $request->method(),
+        'url' => $request->url(),
+        'path' => $request->path(),
+        'fullUrl' => $request->fullUrl(),
+        'ip' => $request->ip(),
+        'userAgent' => $request->userAgent()
+
     ];
+});
+
+Route::get('/users', function(Request $request){
+    return $request->except(['name']);
 });
